@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" width="640" height="360">
+<defs>
+<linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#101a33"/><stop offset="1" stop-color="#0b1120"/></linearGradient>
+<pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0H0V32" fill="none" stroke="#94a3b8" stroke-opacity=".08"/></pattern>
+<radialGradient id="glow" cx=".8" cy=".1" r=".8"><stop offset="0" stop-color="#00d4ff" stop-opacity=".18"/><stop offset="1" stop-color="#00d4ff" stop-opacity="0"/></radialGradient>
+</defs>
+<rect width="640" height="360" fill="url(#bg)"/><rect width="640" height="360" fill="url(#grid)"/><rect width="640" height="360" fill="url(#glow)"/>
+<g font-family="ui-monospace,Menlo,monospace" font-size="13" fill="#94a3b8"><rect x="56" y="44" width="300" height="270" rx="10" fill="#131c33" stroke="#94a3b8" stroke-opacity=".2"/><circle cx="72" cy="60" r="4" fill="#94a3b8" fill-opacity=".4"/><circle cx="86" cy="60" r="4" fill="#94a3b8" fill-opacity=".4"/><circle cx="100" cy="60" r="4" fill="#94a3b8" fill-opacity=".4"/><text x="84" y="84" fill="#94a3b8">%</text><text x="84" y="106" fill="#00d4ff">O1001 (BRACKET REV C)</text><text x="84" y="128" fill="#94a3b8">G90 G17 G40 G80</text><text x="84" y="150" fill="#00d4ff">T1 M06 (10MM EM)</text><text x="84" y="172" fill="#94a3b8">S8000 M03</text><text x="84" y="194" fill="#fff">G00 X0. Y0.</text><text x="84" y="216" fill="#94a3b8">G43 Z25. H01</text><text x="84" y="238" fill="#fff">G01 Z-2. F400.</text><text x="84" y="260" fill="#94a3b8">X42.5 Y18.</text><text x="84" y="282" fill="#94a3b8">M30</text><rect x="380" y="70" width="204" height="210" rx="10" fill="#131c33" stroke="#00d4ff" stroke-opacity=".4"/><text x="400" y="104" fill="#fff">$ gcode-info</text><text x="400" y="140">tools   4</text><text x="400" y="166">moves   1,284</text><text x="400" y="192" fill="#00d4ff">cycle   ~6m 42s</text><text x="400" y="218">diff    +3 / -1</text></g>
+<text x="28" y="336" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#94a3b8" fill-opacity=".7">inspect · estimate · diff</text>
+</svg>

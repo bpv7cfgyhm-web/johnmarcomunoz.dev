@@ -1,0 +1,83 @@
+/* =========================================================
+   ANIMATIONS — scroll reveals, logo loop, dither veil
+   Tweak timing here; everything respects prefers-reduced-motion.
+   ========================================================= */
+
+:root {
+  --reveal-distance: 22px;   /* how far elements rise while fading in */
+  --reveal-duration: 800ms;
+  --reveal-stagger: 70ms;    /* delay between siblings revealing together */
+  --loop-duration: 40s;      /* fallback; JS sets it per loop from data-speed */
+}
+
+/* ---------- Scroll reveal ----------
+   Only hide content once JS has confirmed it will reveal it (html.js).
+   Uses the `translate` property so card hover effects (which use
+   `transform`) keep working. The stagger delay applies to the reveal only. */
+.js .reveal {
+  opacity: 0;
+  translate: 0 var(--reveal-distance);
+  transition-property: opacity, translate, transform, border-color, box-shadow, background-color;
+  transition-duration: var(--reveal-duration), var(--reveal-duration), var(--dur), var(--dur), var(--dur), var(--dur);
+  transition-timing-function: var(--ease);
+  transition-delay:
+    calc(var(--reveal-index, 0) * var(--reveal-stagger)),
+    calc(var(--reveal-index, 0) * var(--reveal-stagger)),
+    0s, 0s, 0s, 0s;
+}
+.js .reveal.is-visible {
+  opacity: 1;
+  translate: none;
+}
+
+/* ---------- Logo loop ---------- */
+.logo-loop.is-ready .logo-loop-track {
+  animation: logo-loop var(--loop-duration) linear infinite;
+}
+.logo-loop-reverse.is-ready .logo-loop-track { animation-direction: reverse; }
+.logo-loop:hover .logo-loop-track,
+.logo-loop:focus-within .logo-loop-track { animation-play-state: paused; }
+
+@keyframes logo-loop {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-100%); }
+}
+
+/* ---------- Status dot pulse ---------- */
+.status-dot { animation: pulse 2.4s var(--ease) infinite; }
+@keyframes pulse {
+  0%   { box-shadow: 0 0 0 0 rgba(var(--accent-rgb), 0.55); }
+  70%  { box-shadow: 0 0 0 10px rgba(var(--accent-rgb), 0); }
+  100% { box-shadow: 0 0 0 0 rgba(var(--accent-rgb), 0); }
+}
+
+/* ---------- Dither veil ----------
+   js/dither.js places a canvas over [data-dither] elements and dissolves
+   it pixel-by-pixel (ordered Bayer dither) as the element scrolls in. */
+.dither-veil {
+  position: absolute;
+  inset: -8px;
+  width: calc(100% + 16px);
+  height: calc(100% + 16px);
+  pointer-events: none;
+  z-index: 2;
+  image-rendering: pixelated;
+}
+
+/* ---------- Reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    transition-delay: 0s !important;
+  }
+  .js .reveal { opacity: 1; translate: none; }
+  .logo-loop { -webkit-mask-image: none; mask-image: none; }
+  .logo-loop-track { flex-wrap: wrap; min-width: 0; row-gap: 12px; }
+  .logo-loop-track[aria-hidden="true"] { display: none; }
+  .dither-veil, .hero-dither { display: none; }
+}

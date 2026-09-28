@@ -1,0 +1,76 @@
+/* =========================================================
+   DESIGN TOKENS
+   Change colors, fonts, spacing and motion timing here.
+   Everything else reads from these variables.
+   ========================================================= */
+
+:root {
+  /* ---- Accent (the main thing to tweak) ----
+     --accent       solid fills: primary buttons, active chips, dots
+     --accent-bright text/lines on dark backgrounds (needs good contrast)
+     --accent-rgb    same as --accent-bright as "r, g, b" for transparent glows */
+  --accent: #2446ff;
+  --accent-hover: #3a5bff;
+  --accent-bright: #00d4ff;
+  --accent-rgb: 0, 212, 255;
+  --on-accent: #ffffff;
+
+  /* ---- Dark theme (default) ---- */
+  --bg: #0b1120;
+  --bg-alt: #0f172a;
+  --surface: #131c33;
+  --surface-2: #19233f;
+  --border: rgba(148, 163, 184, 0.14);
+  --border-strong: rgba(148, 163, 184, 0.28);
+  --text: #e0e0e0;
+  --text-muted: #94a3b8;
+  --heading: #ffffff;
+  --header-bg: rgba(11, 17, 32, 0.72);
+  --shadow: 0 20px 50px -20px rgba(0, 0, 0, 0.6);
+  --dither-color: 11, 17, 32; /* matches --bg; used by the dither veil canvas */
+
+  /* ---- Typography ---- */
+  --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --fs-hero: clamp(2.5rem, 6vw + 0.5rem, 5rem);
+  --fs-h2: clamp(1.9rem, 3vw + 0.6rem, 3rem);
+  --fs-h3: 1.2rem;
+  --fs-body: 1.0625rem;
+  --fs-small: 0.875rem;
+  --lh-body: 1.7;
+
+  /* ---- Layout ---- */
+  --container: 1160px;
+  --gutter: clamp(16px, 4vw, 32px);
+  --section-pad: clamp(80px, 12vw, 140px);
+  --radius: 14px;
+  --radius-sm: 8px;
+  --header-h: 68px;
+
+  /* ---- Motion ---- */
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --dur-fast: 180ms;
+  --dur: 350ms;
+  --dur-slow: 700ms;
+}
+
+/* ---- Light theme (toggle in the header) ---- */
+:root[data-theme="light"] {
+  --accent: #1d3dff;
+  --accent-hover: #0f2ee0;
+  --accent-bright: #0060d6;
+  --accent-rgb: 0, 96, 214;
+
+  --bg: #f7f8fb;
+  --bg-alt: #eef1f7;
+  --surface: #ffffff;
+  --surface-2: #f2f4f9;
+  --border: rgba(15, 23, 42, 0.1);
+  --border-strong: rgba(15, 23, 42, 0.2);
+  --text: #334155;
+  --text-muted: #5b6b82;
+  --heading: #0b1120;
+  --header-bg: rgba(247, 248, 251, 0.8);
+  --shadow: 0 20px 50px -24px rgba(15, 23, 42, 0.25);
+  --dither-color: 247, 248, 251;
+}
